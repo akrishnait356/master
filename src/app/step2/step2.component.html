@@ -1,0 +1,20 @@
+<div>
+    <h2>Step 2 : Select your config and options</h2>
+    <form>
+       <label for="config">Config</label>
+       <select id="configSelect" [(ngModel)]="step2Config" name="config" (ngModelChange)="onSelectConfigChange()"> 
+           <option *ngFor="let config of step2OptionSettings?.configs" [ngValue]="config">{{config.description}}</option>
+       </select>
+      
+       <div>Range: {{step2Config?.range}} miles - Max Speed: {{step2Config?.speed}} - Cost:$ {{step2Config?.price | number: '1.2-2'}}</div>
+       <div *ngIf="step2OptionSettings?.towHitch">
+       <label for="towHitch">Tow hitch? </label>
+       <input type="checkbox" id="includeTow" name="towHitch" [(ngModel)]="towHitchChecked" (ngModelChange)="onTowHitchChange()">
+       </div>
+
+       <div *ngIf="step2OptionSettings?.yoke">
+       <label for="yoke">Yoke steering wheel? </label>
+       <input type="checkbox" id="includeYoke" name="yoke" [(ngModel)]="yokeChecked" (ngModelChange)="onYokeChange()">
+       </div>
+    </form>
+   </div>
